@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-gold: #D4AF37;
+    --color-gold-light: #FCF6BA;
+    --color-bg: #040406;
+    --color-surface: #0d0d14;
+    --color-surface-2: #141420;
+    --color-border: rgba(255,255,255,0.07);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #040406;
+    color: #f0f0f5;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #FCF6BA;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #040406; }
+  ::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+}
+
+@layer utilities {
+  .gold-text {
+    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 60%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .glass-gold {
+    background: rgba(212,175,55,0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212,175,55,0.15);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 40px rgba(212,175,55,0.15), 0 0 80px rgba(212,175,55,0.05);
+  }
+
+  .stadium-gradient {
+    background: radial-gradient(ellipse 120% 60% at 50% 100%, rgba(212,175,55,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 80% 40% at 20% 0%, rgba(59,130,246,0.06) 0%, transparent 60%),
+                #040406;
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 40px rgba(212,175,55,0.4);
+  }
+
+  .noise-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 256px;
+  }
+}
+
+/* GSAP animation helpers */
+.reveal-up { opacity: 0; transform: translateY(60px); }
+.reveal-in { opacity: 0; transform: scale(0.95); }
+
+/* Animated underline */
+.animated-underline {
+  position: relative;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #D4AF37;
+  transition: width 0.4s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Form badge colors */
+.form-W { color: #22c55e; }
+.form-D { color: #eab308; }
+.form-L { color: #ef4444; }
